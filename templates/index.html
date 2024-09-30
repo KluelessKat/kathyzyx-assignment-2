@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMeans Clustering Algorithm</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+    <!-- Main container for the entire content -->
+    <div class="container">
+        <!-- Title -->
+        <h1>KMeans Clustering Algorithm</h1>
+
+        <!-- Form for number of clusters and initialization method -->
+        <div class="form-group">
+            <label for="numClusters">Number of Clusters (k):</label>
+            <input type="number" id="numClusters" value="3" min="1">
+        </div>
+
+        <div class="form-group">
+            <label for="initMethod">Initialization Method:</label>
+            <select id="initMethod">
+                <option value="random">Random</option>
+                <option value="kmeans++">KMeans++</option>
+                <option value="farthest">Farthest First</option>
+                <option value="manual">Manual</option>
+            </select>
+        </div>
+
+        <!-- Buttons for algorithm controls -->
+        <div class="button-group">
+            <button id="stepKMeans" onclick="autoStepThrough()">Step Through KMeans</button>
+            <button id="runConvergence" class="disabled" onclick="goToConvergence()">Run to Convergence</button>
+        </div>
+
+        <div class="button-group">
+            <button id="generateDataset" onclick="generateNewDataset()">Generate New Dataset</button>
+            <button id="reset" onclick="reset()">Reset Algorithm</button>
+        </div>
+
+        <!-- Plot container -->
+        <div id="plot" style="width:80%; height:500px; margin: 0 auto;"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+    <!-- Automatically generate a dataset and plot it when the page loads -->
+    <script>
+        // Call the function when the page loads to generate a dataset and plot it
+        window.onload = function() {
+            generateNewDataset();  // Automatically generate dataset and plot it on page load
+        };
+    </script>
+
+
+</body>
+</html>
